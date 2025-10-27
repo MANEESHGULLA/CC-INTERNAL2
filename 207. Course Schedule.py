@@ -5,20 +5,25 @@ def canFinish(numCourses, prerequisites):
         preMap[crs].append(pre)
     
     visited=set()
+    cycle=set()
 
     def dfs(crs):
-        if crs in visited:
+        if crs in cycle:
             return False
+        
+        if crs in visited:
+            return True
         
         if preMap[crs]==[]:
             return True
         
-        visited.add(crs)
+        cycle.add(crs)
         
         for pre in preMap[crs]:
             if not dfs(pre):return False
         
-        visited.remove(crs)
+        cycle.remove(crs)
+        visited.add(crs)
         preMap[crs]=[]
         return True
     
@@ -26,6 +31,9 @@ def canFinish(numCourses, prerequisites):
         if not dfs(crs):return False
     
     return True
+
+
+        
 
 numCourses = 2
 prerequisites = [[1,0],[0,1]]
