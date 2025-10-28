@@ -5,9 +5,9 @@ def minMeetingRooms(intervals):
   start=sorted([i[0] for i in intervals])
   end=sorted([i[1] for i in intervals])
 
-  rooms=1
-  max_rooms=1
-  i=1
+  rooms=0
+  max_rooms=0
+  i=0
   j=0
 
   n=len(intervals)
