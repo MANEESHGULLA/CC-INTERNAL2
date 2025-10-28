@@ -1,17 +1,16 @@
-#meeting room 1
+#meeting rooms
 
-def maxMeetings(start,end):
-  meetings=sorted(zip(start,end),key=lambda x:x[1])
-  curr_time=-1
-  time_slot=[]
+def meetings(intervals):
+  start=sorted([i[0] for i in intervals] )
+  end=sorted([i[1] for i in intervals] )
 
-  for s,e in meetings:
-    if s>curr_time:
-      time_slot.append((s,e))
-      curr_time=e
-
-  return time_slot
-
-Start = [1, 4,6,8]
-End = [3,5,9,10]
-print(maxMeetings(Start, End)) #[(1, 3), (4, 5), (6, 9)]
+  for i in range(1,len(start)):
+    if start[i]<end[i-1]:
+      return False
+    
+  return True
+      
+    
+intervals=[[1,3],[2,5],[6,8]]
+print(meetings(intervals))
+  
