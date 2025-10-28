@@ -1,16 +1,13 @@
-def canJump(nums):
-    max_reach = 0
-    n = len(nums)
+#jump game
 
-    for i in range(n):
-        if i > max_reach:
-            return False  # can't reach this index
-        max_reach = max(max_reach, i + nums[i])
-        if max_reach >= n - 1:
-            return True  # can reach or go beyond last index
+def jumpgame(nums):
+  goal=len(nums)-1
 
-    return True
+  for i in range(len(nums)-1,-1,-1):
+    if i+nums[i]>=goal:
+      goal=i
+  
+  return True if goal==0 else False
 
-# Examples
-print(canJump([2,3,1,1,4]))  # Output: True
-print(canJump([3,2,1,0,4]))  # Output: False
+nums=[2,3,1,1,4]
+print(jumpgame(nums)) #True
