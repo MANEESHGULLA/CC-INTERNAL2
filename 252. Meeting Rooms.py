@@ -12,5 +12,5 @@ def meetings(intervals):
       
     
 intervals=[[1,3],[2,5],[6,8]]
-print(meetings(intervals))
+print(meetings(intervals)) #False
   
